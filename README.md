@@ -1,2 +1,0 @@
-# SortingAlgorithmsSimulation
-Simulation sort algorithms
