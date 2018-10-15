@@ -495,10 +495,7 @@ namespace SortingAlgorithmsSimulation
                 swap(index, largest);
                 MaxHeapify(heapSize, largest);
             }
-            else
-            {
-                HighLight(largest, Color.LightBlue);
-            }
+            else HighLight(largest, Color.LightBlue);
         }
 
         private void ShellSort()
