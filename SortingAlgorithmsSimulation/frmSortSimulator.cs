@@ -443,7 +443,8 @@ namespace SortingAlgorithmsSimulation
             for (int p = (heapSize - 1) / 2; p >= 0; p--)
                 MaxHeapify(heapSize, p);
             for (int i =  heapSize- 1; i > 0; i--)
-            { 
+            {
+                HighLight(0, Color.Orange);
                 MoveButton(i,0);
                 swap(i, 0);
                 heapSize--;
@@ -455,30 +456,55 @@ namespace SortingAlgorithmsSimulation
         {
             int left = (index + 1) * 2 - 1;
             int right = (index + 1) * 2;
-            int largest = 0;
-
-            if (left < heapSize && arrValue[left] > arrValue[index])
-                largest = left;
-            else
-                largest = index;
-            if (right < heapSize && arrValue[right] > arrValue[largest])
+            int largest = index;
+            
+            //Đổi màu 2 giá trị được xét
+            // 1. largest vs left
+            HighLight(largest, Color.Green);
+            if (left < heapSize)
             {
-                largest = right;
+                HighLight(left, Color.Green);
+                Thread.Sleep(sleep);
+                if (arrValue[left] > arrValue[largest])
+                {
+                    HighLight(largest, Color.LightBlue);
+                    largest = left;
+                }
+                else HighLight(left, Color.LightBlue);
             }
+            
+            // 2. largest vs right
+            if (right < heapSize)
+            {
+                HighLight(right, Color.Green);
+                Thread.Sleep(sleep);
+
+                if (arrValue[right] > arrValue[largest])
+                {
+                    HighLight(largest, Color.LightBlue);
+                    largest = right;
+                }
+                else HighLight(right, Color.LightBlue);
+            }
+            //
             if (largest != index)
             {
-                MoveButton(largest,index);
+                MoveButton(largest, index);
+                HighLight(largest, Color.LightBlue);
+                HighLight(index, Color.LightBlue);
                 swap(index, largest);
                 MaxHeapify(heapSize, largest);
             }
+            else
+            {
+                HighLight(largest, Color.LightBlue);
+            }
         }
-
 
         private void ShellSort()
         {
-            throw new NotImplementedException();
+            
         }
-
         #endregion
     }
 }

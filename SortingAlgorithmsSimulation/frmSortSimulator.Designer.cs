@@ -142,9 +142,9 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(10, 57);
+            this.trackBar1.Location = new System.Drawing.Point(8, 57);
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(165, 56);
+            this.trackBar1.Size = new System.Drawing.Size(185, 56);
             this.trackBar1.TabIndex = 5;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
@@ -170,7 +170,7 @@
             // btnPause
             // 
             this.btnPause.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnPause.Location = new System.Drawing.Point(43, 121);
+            this.btnPause.Location = new System.Drawing.Point(51, 121);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(98, 42);
             this.btnPause.TabIndex = 6;
@@ -190,7 +190,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmSortSimulator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sorting Algorithms Simulation";
+            this.Text = "Mô phỏng thuật toán sắp xếp";
             this.Load += new System.EventHandler(this.frmSortSimulator_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
