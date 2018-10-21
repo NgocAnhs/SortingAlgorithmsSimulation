@@ -135,9 +135,9 @@
             this.pnlSimulator.AutoScroll = true;
             this.pnlSimulator.BackColor = System.Drawing.Color.White;
             this.pnlSimulator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlSimulator.Location = new System.Drawing.Point(12, 216);
+            this.pnlSimulator.Location = new System.Drawing.Point(11, 217);
             this.pnlSimulator.Name = "pnlSimulator";
-            this.pnlSimulator.Size = new System.Drawing.Size(982, 321);
+            this.pnlSimulator.Size = new System.Drawing.Size(982, 439);
             this.pnlSimulator.TabIndex = 4;
             // 
             // trackBar1
@@ -181,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 721);
+            this.ClientSize = new System.Drawing.Size(1004, 721);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.pnlSimulator);
             this.Controls.Add(this.groupBox2);

@@ -34,28 +34,31 @@ namespace SortingAlgorithmsSimulation
         int sleep = 420;  //thời gian dừng để quan sát các bước duyệt của thuật toán (sleep = 30 * speed)
         bool sorting = false;
         int sortSelected;   //Thuật toán sắp xếp muốn mô phỏng
+        private bool[] arrIsApproved;  //Đánh dấu button đang được xét
         #endregion
 
         private void btnCreateArr_Click(object sender, EventArgs e)
         {
+
             if (sorting) return;
             numArr = int.Parse(txtNumArr.Text);
             arrValue = new int[numArr];
             arrButton = new Button[numArr];
+            arrIsApproved = new bool[numArr];
 
             pnlSimulator.Controls.Clear();
 
             for (int i = 0; i < numArr; i++)
             {
-                int value = rd.Next(20, 150);
+                int value = rd.Next(10, 150);
                 Button btn = new Button();
                 btn.FlatStyle = FlatStyle.Flat;
-                btn.FlatAppearance.BorderColor=Color.LightSkyBlue;
+                btn.FlatAppearance.BorderColor = Color.LightSkyBlue;
                 btn.Size = new Size(WIDTH, value);
                 //btn.Text = value.ToString();
                 btn.Location = new Point(
-                    (pnlSimulator.Width - (WIDTH + GAP) * numArr)/2 + (WIDTH + GAP) * i,
-                    pnlSimulator.Height - WIDTH - value);
+                    (pnlSimulator.Width - (WIDTH + GAP) * numArr) / 2 + (WIDTH + GAP) * i,
+                    pnlSimulator.Height - WIDTH - value - 200);
                 btn.BackColor = Color.LightBlue;
 
                 pnlSimulator.Controls.Add(btn);
@@ -64,11 +67,6 @@ namespace SortingAlgorithmsSimulation
                 arrValue[i] = value;
             }
             btnSort.Enabled = true;
-            //MergeSort(0, numArr - 1);
-            //for (int i = 0; i < numArr; i++)
-            //{
-            //    txtNumArr.Text += arrValue[i] + " ";
-            //}
         }
 
         private void btnSort_Click(object sender, EventArgs e)
@@ -76,7 +74,7 @@ namespace SortingAlgorithmsSimulation
             sorting = true;
             btnSort.Enabled = false;
             sortSelected = cboSortAlgo.SelectedIndex;
-            bgwSimuSort.RunWorkerAsync();          
+            bgwSimuSort.RunWorkerAsync();
         }
 
         //Change speed sort in runtime
@@ -102,19 +100,66 @@ namespace SortingAlgorithmsSimulation
                 arrButton[pos].BackColor = color;
         }
 
-        private void MoveButton(int p1, int p2)
+        private void MoveButtonUpDown(int p1)
+        {
+            Status st = new Status();
+            st.Pos1 = p1;
+            st.Pos2 = p1;
+            int x;
+            if (arrIsApproved[p1])
+            {
+                st.mType = MoveType.BOTTOM_TO_LINE;
+                arrIsApproved[p1] = false;
+            }
+            else
+            {
+                st.mType = MoveType.LINE_TO_BOTTOM;
+                arrIsApproved[p1] = true;
+            }
+
+            for (x = 0; x < (WIDTH + 140) / 2; x++)
+            {
+                bgwSimuSort.ReportProgress(0, st);
+                Thread.Sleep(speed);
+            }
+            /*
+            else
+            {
+                if (p1 < p2)
+                    st.mType = MoveType.LEFT_TO_RIGHT;
+                else st.mType = MoveType.RIGHT_TO_LEFT;
+
+                int nLoop = ((WIDTH + GAP) * Math.Abs(st.Pos1 - st.Pos2)) / 2;
+                for (x = 0; x < nLoop; x++)
+                {
+                    bgwSimuSort.ReportProgress(0, st);
+                    Thread.Sleep(speed);
+                }
+
+                st.mType = MoveType.BOTTOM_TO_LINE;
+                isApproved = false;
+
+                for (x = 0; x < (WIDTH + 140) / 2; x++)
+                {
+                    bgwSimuSort.ReportProgress(0, st);
+                    Thread.Sleep(speed);
+                }
+            }*/
+
+            if (!arrIsApproved[p1])
+            {
+                st.mType = MoveType.CHANGED;
+                bgwSimuSort.ReportProgress(0, st);
+                Thread.Sleep(speed);
+            }
+        }
+
+        private void MoveButtonLeftRight(int p1, int p2)
         {
             Status st = new Status();
             st.Pos1 = p1;
             st.Pos2 = p2;
             int x;
-
-            //st.mType = MoveType.LINE_TO_TOP_AND_LINE_TO_BOTTOM;
-            //for (x = 0; x < SIZE; x++)
-            //{
-            //    bgwSimuSort.ReportProgress(0, st);
-            //    Thread.Sleep(10);
-            //}
 
             st.mType = MoveType.LEFT_TO_RIGHT_AND_RIGHT_TO_LEFT;
             int nLoop = ((WIDTH + GAP) * Math.Abs(st.Pos1 - st.Pos2)) / 2;
@@ -123,13 +168,6 @@ namespace SortingAlgorithmsSimulation
                 bgwSimuSort.ReportProgress(0, st);
                 Thread.Sleep(speed);
             }
-
-            //st.mType = MoveType.TOP_TO_LINE_AND_BOTTOM_TO_LINE;
-            //for (x = 0; x < SIZE; x++)
-            //{
-            //    bgwSimuSort.ReportProgress(0, st);
-            //    Thread.Sleep(10);
-            //}
 
             st.mType = MoveType.CHANGED;
             bgwSimuSort.ReportProgress(0, st);
@@ -178,22 +216,41 @@ namespace SortingAlgorithmsSimulation
                 Button btnTmp = arrButton[st.Pos1];
                 arrButton[st.Pos1] = arrButton[st.Pos2];
                 arrButton[st.Pos2] = btnTmp;
+
+                bool Tmp = arrIsApproved[st.Pos1];
+                arrIsApproved[st.Pos1] = arrIsApproved[st.Pos2];
+                arrIsApproved[st.Pos2] = Tmp;
                 return;
             }
 
             Button btn1 = arrButton[st.Pos1];
             Button btn2 = arrButton[st.Pos2];
-            //if (st.mType == MoveType.LINE_TO_TOP_AND_LINE_TO_BOTTOM)
+            if (st.mType == MoveType.LINE_TO_BOTTOM)
+            {
+                btn1.Top += 2;
+            }
+            else if (st.mType == MoveType.BOTTOM_TO_LINE)
+            {
+                btn1.Top -= 2;
+            }
+            //else if (st.mType == MoveType.LEFT_TO_RIGHT)
             //{
-            //    btn1.Top = btn1.Top + 1;
-            //    btn2.Top = btn2.Top - 1;
+            //    btn1.Left -= 2;
             //}
-            //else 
+            //else if (st.mType == MoveType.RIGHT_TO_LEFT)
+            //{
+            //    btn1.Left += 2;
+            //}
             if (st.mType == MoveType.LEFT_TO_RIGHT_AND_RIGHT_TO_LEFT)
             {
                 btn1.Left = btn1.Left - 2;
                 btn2.Left = btn2.Left + 2;
             }
+            //else if (st.mType == MoveType.LINE_TO_TOP_AND_LINE_TO_BOTTOM)
+            //{
+            //    btn1.Top = btn1.Top + 1;
+            //    btn2.Top = btn2.Top - 1;
+            //}
             //else if (st.mType == MoveType.TOP_TO_LINE_AND_BOTTOM_TO_LINE)
             //{
             //    btn1.Top = btn1.Top - 1;
@@ -231,7 +288,7 @@ namespace SortingAlgorithmsSimulation
                         HighLight(j, Color.Orange);
                         HighLight(j - 1, Color.Orange);
 
-                        MoveButton(j, j - 1);
+                        MoveButtonLeftRight(j, j - 1);
                         swap(j, j - 1);
                         swapped = true;
 
@@ -260,24 +317,24 @@ namespace SortingAlgorithmsSimulation
                     HighLight(j, Color.Green);
 
                     Thread.Sleep(sleep);
-                    arrValue[j  + 1] = arrValue[j];
-                    MoveButton(j + 1, j);
+                    arrValue[j + 1] = arrValue[j];
+                    MoveButtonLeftRight(j + 1, j);
                     //sau khi move, index của 2 button đã thay đổi
                     HighLight(j + 1, Color.Orange);
                     Thread.Sleep(sleep);
                     j--;
                 }
                 HighLight(i, Color.Orange);
-                HighLight(j+1, Color.Orange);
+                HighLight(j + 1, Color.Orange);
                 Thread.Sleep(sleep);
 
                 arrValue[j + 1] = x;
-            }          
+            }
         }
 
         private void SelectionSort()
         {
-            for(int i =0; i< numArr - 1; i++)
+            for (int i = 0; i < numArr - 1; i++)
             {
                 int minPos = i;
                 //change color to red
@@ -300,8 +357,8 @@ namespace SortingAlgorithmsSimulation
                     Thread.Sleep(sleep);
                     //else return color lightblue
                 }
-                
-                MoveButton(minPos, i);
+
+                MoveButtonLeftRight(minPos, i);
                 swap(minPos, i);
                 //change color to Orange
                 HighLight(i, Color.Orange);
@@ -310,12 +367,12 @@ namespace SortingAlgorithmsSimulation
 
         private void InterchangeSort()
         {
-            for(int i = 0; i < numArr - 1; i++)
+            for (int i = 0; i < numArr - 1; i++)
             {
                 HighLight(i, Color.Red);
                 Thread.Sleep(sleep);
 
-                for(int j = i + 1; j<numArr; j++)
+                for (int j = i + 1; j < numArr; j++)
                 {
                     HighLight(j, Color.Green);
                     Thread.Sleep(sleep);
@@ -326,7 +383,7 @@ namespace SortingAlgorithmsSimulation
                         HighLight(j, Color.Red);
                         Thread.Sleep(sleep);
 
-                        MoveButton(j,i);
+                        MoveButtonLeftRight(j, i);
                         swap(i, j);
                     }
                     HighLight(j, Color.LightBlue);
@@ -342,9 +399,9 @@ namespace SortingAlgorithmsSimulation
             if (low < high)
             {
                 int m = Partition(low, high); // O(N)
-                                                 // a[low..high] ~> a[low..m–1], pivot, a[m+1..high]
+                                              // a[low..high] ~> a[low..m–1], pivot, a[m+1..high]
                 QuickSort(low, m - 1); // recursively sort left subarray
-                                          // a[m] = pivot is already sorted after partition
+                                       // a[m] = pivot is already sorted after partition
                 QuickSort(m + 1, high); // then sort right subarray
             }
             if (low < numArr)
@@ -358,26 +415,26 @@ namespace SortingAlgorithmsSimulation
         {
             int p = arrValue[i]; // p is the pivot
             HighLight(i, Color.Yellow);
-            int m = i; 
+            int m = i;
             for (int k = i + 1; k <= j; k++)
-            { 
+            {
                 HighLight(k, Color.Red);
                 Thread.Sleep(sleep);
                 if (arrValue[k] < p)
-                { 
+                {
                     m++;
-                    MoveButton(k, m);
+                    MoveButtonLeftRight(k, m);
                     HighLight(m, Color.LightGreen);
                     Thread.Sleep(sleep);
-                    swap(k, m); 
-                } 
+                    swap(k, m);
+                }
                 else
                 {
                     HighLight(k, Color.Purple);
                     Thread.Sleep(sleep);
                 }
             }
-            MoveButton(m, i);
+            MoveButtonLeftRight(m, i);
             swap(i, m); // final step, swap pivot with a[m]
             for (int x = i; x <= j; x++)
             {
@@ -393,29 +450,43 @@ namespace SortingAlgorithmsSimulation
         {
             // subarray1 = a[low..mid], subarray2 = a[mid+1..high], both sorted
             int N = high - low + 1;
-            int[] b = new int[N]; // discuss: why do we need a temporary array b?
+            int[] b = new int[N];
             int left = low;
+            int leftArrBtn = left;
             int right = mid + 1;
             int bIdx = 0;
+
+            for (int i = low; i <= high; i++)
+            {
+                HighLight(i, Color.Green);
+            }
+            Thread.Sleep(sleep);
             while (left <= mid && right <= high) // the merging
             {
-                //HighLight(left, Color.Red);
-                //HighLight(right, Color.Red);
-                //Thread.Sleep(sleep);
-                if(arrValue[left] <= arrValue[right])
+                if (arrValue[left] <= arrValue[right])
                 {
                     b[bIdx++] = arrValue[left++];
                 }
                 else
                 {
-                    //MoveButton(right, left);
+                    HighLight(right, Color.Red);
+                    MoveButtonUpDown(right);
+                    int x;
+                    for (x = right - 1; x >= leftArrBtn; x--)
+                    {
+                        MoveButtonLeftRight(x + 1, x);
+                    }
+                    MoveButtonUpDown(x + 1);
+                    HighLight(x + 1, Color.Green);
                     b[bIdx++] = arrValue[right++];
                 }
-                //HighLight(left, Color.LightBlue);
-                //HighLight(right, Color.LightBlue);
-                //Thread.Sleep(sleep);
-                //b[bIdx++] = (arrValue[left] <= arrValue[right]) ? arrValue[left++] : arrValue[right++];
-            } 
+                leftArrBtn++;
+            }
+            for (int i = low; i <= high; i++)
+            {
+                HighLight(i, Color.LightBlue);
+            }
+            Thread.Sleep(sleep);
             while (left <= mid)
                 b[bIdx++] = arrValue[left++]; // leftover, if any
             while (right <= high)
@@ -442,10 +513,10 @@ namespace SortingAlgorithmsSimulation
             int heapSize = numArr;
             for (int p = (heapSize - 1) / 2; p >= 0; p--)
                 MaxHeapify(heapSize, p);
-            for (int i =  heapSize- 1; i > 0; i--)
+            for (int i = heapSize - 1; i > 0; i--)
             {
                 HighLight(0, Color.Orange);
-                MoveButton(i,0);
+                MoveButtonLeftRight(i, 0);
                 swap(i, 0);
                 heapSize--;
                 MaxHeapify(heapSize, 0);
@@ -457,7 +528,7 @@ namespace SortingAlgorithmsSimulation
             int left = (index + 1) * 2 - 1;
             int right = (index + 1) * 2;
             int largest = index;
-            
+
             //Đổi màu 2 giá trị được xét
             // 1. largest vs left
             HighLight(largest, Color.Green);
@@ -472,7 +543,7 @@ namespace SortingAlgorithmsSimulation
                 }
                 else HighLight(left, Color.LightBlue);
             }
-            
+
             // 2. largest vs right
             if (right < heapSize)
             {
@@ -489,7 +560,7 @@ namespace SortingAlgorithmsSimulation
             //
             if (largest != index)
             {
-                MoveButton(largest, index);
+                MoveButtonLeftRight(largest, index);
                 HighLight(largest, Color.LightBlue);
                 HighLight(index, Color.LightBlue);
                 swap(index, largest);
@@ -500,7 +571,37 @@ namespace SortingAlgorithmsSimulation
 
         private void ShellSort()
         {
-            
+            for (int gap = numArr / 2; gap > 0; gap /= 2)
+            {
+                for (int i = gap; i < numArr; i += 1)
+                {
+                    int temp = arrValue[i];
+                    HighLight(i, Color.Red);
+
+                    if (i >= gap)
+                    {
+                        HighLight(i - gap, Color.Green);
+                        Thread.Sleep(sleep);
+                    }
+
+                    if (arrValue[i - gap] > temp)
+                        MoveButtonUpDown(i);
+                    int j;
+
+                    for (j = i; j >= gap && arrValue[j - gap] > temp; j -= gap)
+                    {
+                        HighLight(j - gap, Color.Green);
+                        MoveButtonLeftRight(j, j - gap);
+                        HighLight(j, Color.LightBlue);
+                        Thread.Sleep(sleep);
+                        arrValue[j] = arrValue[j - gap];
+                    }
+                    if (arrIsApproved[j]) MoveButtonUpDown(j);
+                    HighLight(j, Color.LightBlue);
+                    HighLight(i - gap, Color.LightBlue);
+                    arrValue[j] = temp;
+                }
+            }
         }
         #endregion
     }
