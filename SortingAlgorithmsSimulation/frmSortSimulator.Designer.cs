@@ -39,7 +39,7 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.bgwSimuSort = new System.ComponentModel.BackgroundWorker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnPause = new System.Windows.Forms.Button();
+            this.lblSortInfo = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -135,7 +135,7 @@
             this.pnlSimulator.AutoScroll = true;
             this.pnlSimulator.BackColor = System.Drawing.Color.White;
             this.pnlSimulator.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlSimulator.Location = new System.Drawing.Point(11, 217);
+            this.pnlSimulator.Location = new System.Drawing.Point(12, 265);
             this.pnlSimulator.Name = "pnlSimulator";
             this.pnlSimulator.Size = new System.Drawing.Size(982, 439);
             this.pnlSimulator.TabIndex = 4;
@@ -157,7 +157,6 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btnPause);
             this.groupBox3.Controls.Add(this.trackBar1);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(792, 12);
@@ -167,21 +166,20 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Điều Khiển";
             // 
-            // btnPause
+            // lblSortInfo
             // 
-            this.btnPause.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnPause.Location = new System.Drawing.Point(51, 121);
-            this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(98, 42);
-            this.btnPause.TabIndex = 6;
-            this.btnPause.Text = "Pause";
-            this.btnPause.UseVisualStyleBackColor = true;
+            this.lblSortInfo.Location = new System.Drawing.Point(422, 207);
+            this.lblSortInfo.Name = "lblSortInfo";
+            this.lblSortInfo.Size = new System.Drawing.Size(160, 47);
+            this.lblSortInfo.TabIndex = 0;
+            this.lblSortInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmSortSimulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 721);
+            this.Controls.Add(this.lblSortInfo);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.pnlSimulator);
             this.Controls.Add(this.groupBox2);
@@ -215,7 +213,7 @@
         private System.Windows.Forms.ComboBox cboSortAlgo;
         private System.ComponentModel.BackgroundWorker bgwSimuSort;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.Label lblSortInfo;
     }
 }
 
