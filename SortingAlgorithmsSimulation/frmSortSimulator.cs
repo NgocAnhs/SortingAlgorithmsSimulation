@@ -321,21 +321,6 @@ namespace SortingAlgorithmsSimulation
             }
         }
 
-        private int BinarySearch(int item, int low, int high)
-        {
-            if (high <= low)
-                return (item > arrValue[low]) ? (low + 1) : low;
-
-            int mid = (low + high) / 2;
-
-            if (item == arrValue[mid])
-                return mid + 1;
-
-            if (item > arrValue[mid])
-                return BinarySearch(item, mid + 1, high);
-            return BinarySearch(item, low, mid - 1);
-        }
-
         private void BinaryInsertionSort()
         {
             int i, location, j, selected;
@@ -346,21 +331,20 @@ namespace SortingAlgorithmsSimulation
                 HighLight(j, Color.Orange);
                 HighLight(i, Color.Red);
                 MoveCol(i, i, MoveType.LINE_TO_BOTTOM);
-                Thread.Sleep(sleep);
 
                 location = Math.Abs(Array.BinarySearch(arrValue, 0, i, selected) + 1);
+                if (location!=i) HighLight(location, Color.Green);
+                Thread.Sleep(sleep);
 
                 while (j >= location)
                 {
-                    HighLight(j, Color.Green);
-                    Thread.Sleep(sleep);
                     MoveCol(j + 1, j, MoveType.LEFT_TO_RIGHT_AND_RIGHT_TO_LEFT);
                     HighLight(j + 1, Color.Orange);
-                    Thread.Sleep(sleep);
 
                     arrValue[j + 1] = arrValue[j];
                     j--;
                 }
+
                 MoveCol(j + 1, j + 1, MoveType.BOTTOM_TO_LINE);
                 HighLight(i, Color.Orange);
                 HighLight(j + 1, Color.Orange);
