@@ -1,12 +1,13 @@
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\bin\Debug\SortingAlgorithmsSimulation.exe.config
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\bin\Debug\SortingAlgorithmsSimulation.exe
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\bin\Debug\SortingAlgorithmsSimulation.pdb
-E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csprojAssemblyReference.cache
+E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\bin\Debug\Bunifu_UI_v1.52.dll
+E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.Column.resources
+E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.frmSortSimulator.resources
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.Properties.Resources.resources
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csproj.GenerateResource.cache
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csproj.CoreCompileInputs.cache
+E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csproj.CopyComplete
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.exe
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.pdb
-E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.frmSortSimulator.resources
-E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\bin\Debug\Bunifu_UI_v1.52.dll
-E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csproj.CopyComplete
+E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csprojAssemblyReference.cache

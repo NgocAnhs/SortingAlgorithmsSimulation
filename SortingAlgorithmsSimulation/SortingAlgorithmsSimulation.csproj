@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Column.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Column.Designer.cs">
+      <DependentUpon>Column.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSortSimulator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +65,9 @@
     <Compile Include="Status.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Column.resx">
+      <DependentUpon>Column.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSortSimulator.resx">
       <DependentUpon>frmSortSimulator.cs</DependentUpon>
     </EmbeddedResource>
