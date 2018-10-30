@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSortSimulator));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.nudNumArr = new System.Windows.Forms.NumericUpDown();
             this.btnCreateArr = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.DAteloiV = new System.Windows.Forms.ComboBox();
             this.cboSortAlgo = new System.Windows.Forms.ComboBox();
             this.btnSort = new System.Windows.Forms.Button();
             this.pnlSimulator = new System.Windows.Forms.Panel();
@@ -55,7 +57,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(360, 186);
+            this.groupBox1.Size = new System.Drawing.Size(237, 186);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tạo Mảng";
@@ -74,7 +76,7 @@
             0,
             0});
             this.nudNumArr.Name = "nudNumArr";
-            this.nudNumArr.Size = new System.Drawing.Size(179, 38);
+            this.nudNumArr.Size = new System.Drawing.Size(70, 38);
             this.nudNumArr.TabIndex = 3;
             this.nudNumArr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudNumArr.Value = new decimal(new int[] {
@@ -86,7 +88,7 @@
             // btnCreateArr
             // 
             this.btnCreateArr.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnCreateArr.Location = new System.Drawing.Point(164, 121);
+            this.btnCreateArr.Location = new System.Drawing.Point(47, 121);
             this.btnCreateArr.Name = "btnCreateArr";
             this.btnCreateArr.Size = new System.Drawing.Size(121, 42);
             this.btnCreateArr.TabIndex = 2;
@@ -105,40 +107,45 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.DAteloiV);
             this.groupBox2.Controls.Add(this.cboSortAlgo);
             this.groupBox2.Controls.Add(this.btnSort);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(402, 12);
+            this.groupBox2.Location = new System.Drawing.Point(496, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(360, 186);
+            this.groupBox2.Size = new System.Drawing.Size(499, 186);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thuật toán";
             // 
+            // DAteloiV
+            // 
+            this.DAteloiV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DAteloiV.FormattingEnabled = true;
+            this.DAteloiV.Items.AddRange(new object[] {
+            "Phương pháp xen vào",
+            "Phương pháp đổi chỗ",
+            "Phương pháp lựa chọn"});
+            this.DAteloiV.Location = new System.Drawing.Point(30, 56);
+            this.DAteloiV.Name = "DAteloiV";
+            this.DAteloiV.Size = new System.Drawing.Size(207, 39);
+            this.DAteloiV.TabIndex = 8;
+            this.DAteloiV.SelectedIndexChanged += new System.EventHandler(this.DAteloiV_SelectedIndexChanged);
+            // 
             // cboSortAlgo
             // 
+            this.cboSortAlgo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSortAlgo.FormattingEnabled = true;
-            this.cboSortAlgo.Items.AddRange(new object[] {
-            "Interchange Sort",
-            "Insertion Sort",
-            "Binary Insertion Sort",
-            "Selection Sort",
-            "Bubble Sort",
-            "ShakerSort",
-            "Heap Sort",
-            "Quick Sort (first pivot)",
-            "Merge Sort",
-            "Shell Sort"});
-            this.cboSortAlgo.Location = new System.Drawing.Point(53, 57);
+            this.cboSortAlgo.Location = new System.Drawing.Point(270, 56);
             this.cboSortAlgo.Name = "cboSortAlgo";
-            this.cboSortAlgo.Size = new System.Drawing.Size(251, 39);
+            this.cboSortAlgo.Size = new System.Drawing.Size(207, 39);
             this.cboSortAlgo.TabIndex = 7;
             // 
             // btnSort
             // 
             this.btnSort.Enabled = false;
             this.btnSort.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnSort.Location = new System.Drawing.Point(117, 121);
+            this.btnSort.Location = new System.Drawing.Point(189, 121);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(121, 42);
             this.btnSort.TabIndex = 6;
@@ -155,7 +162,7 @@
             this.pnlSimulator.BackColor = System.Drawing.Color.White;
             this.pnlSimulator.Location = new System.Drawing.Point(12, 265);
             this.pnlSimulator.Name = "pnlSimulator";
-            this.pnlSimulator.Size = new System.Drawing.Size(982, 439);
+            this.pnlSimulator.Size = new System.Drawing.Size(984, 439);
             this.pnlSimulator.TabIndex = 4;
             // 
             // trackBar1
@@ -178,7 +185,7 @@
             // 
             this.groupBox3.Controls.Add(this.trackBar1);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(792, 12);
+            this.groupBox3.Location = new System.Drawing.Point(272, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(201, 186);
             this.groupBox3.TabIndex = 6;
@@ -187,7 +194,7 @@
             // 
             // lblSortInfo
             // 
-            this.lblSortInfo.Location = new System.Drawing.Point(422, 207);
+            this.lblSortInfo.Location = new System.Drawing.Point(423, 207);
             this.lblSortInfo.Name = "lblSortInfo";
             this.lblSortInfo.Size = new System.Drawing.Size(160, 47);
             this.lblSortInfo.TabIndex = 0;
@@ -198,7 +205,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1004, 721);
+            this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.lblSortInfo);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.pnlSimulator);
@@ -206,6 +213,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmSortSimulator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -235,6 +243,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lblSortInfo;
         private System.Windows.Forms.NumericUpDown nudNumArr;
+        private System.Windows.Forms.ComboBox DAteloiV;
     }
 }
-

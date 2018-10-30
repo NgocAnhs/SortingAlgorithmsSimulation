@@ -11,3 +11,27 @@ E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\S
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.exe
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.pdb
 E:\Project 1\SortingAlgorithmsSimulation\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csprojAssemblyReference.cache
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\bin\Debug\SortingAlgorithmsSimulation.exe.config
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\bin\Debug\SortingAlgorithmsSimulation.exe
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\bin\Debug\SortingAlgorithmsSimulation.pdb
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csprojAssemblyReference.cache
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.Column.resources
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.frmSortSimulator.resources
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.Properties.Resources.resources
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csproj.GenerateResource.cache
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csproj.CoreCompileInputs.cache
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csproj.CopyComplete
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.exe
+C:\Users\yatao\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.pdb
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\bin\Debug\SortingAlgorithmsSimulation.exe.config
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\bin\Debug\SortingAlgorithmsSimulation.exe
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\bin\Debug\SortingAlgorithmsSimulation.pdb
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csprojAssemblyReference.cache
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.Column.resources
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.frmSortSimulator.resources
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.Properties.Resources.resources
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csproj.GenerateResource.cache
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csproj.CoreCompileInputs.cache
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.csproj.CopyComplete
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.exe
+C:\Users\ngoca\Desktop\SortingAlgorithmsSimulation-master\SortingAlgorithmsSimulation\obj\Debug\SortingAlgorithmsSimulation.pdb

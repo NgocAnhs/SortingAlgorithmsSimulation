@@ -20,7 +20,7 @@ namespace SortingAlgorithmsSimulation
 
         private void frmSortSimulator_Load(object sender, EventArgs e)
         {
-            cboSortAlgo.SelectedIndex = 0;
+            DAteloiV.SelectedIndex = 0;
         }
 
         #region Variable Global
@@ -54,7 +54,7 @@ namespace SortingAlgorithmsSimulation
                 col.Size = new Size(WIDTH, value + 20);
                 col.Text = value + "";
                 col.Location = new Point(
-                    (pnlSimulator.Width - (WIDTH + GAP) * numArr) / 2 + (WIDTH + GAP) * i,
+                    ((pnlSimulator.Width - ((WIDTH + GAP) * numArr)) / 2) + ((WIDTH + GAP) * i),
                     pnlSimulator.Height - WIDTH - value - 200);
                 col.BackColor = Color.LightBlue;
 
@@ -68,13 +68,11 @@ namespace SortingAlgorithmsSimulation
 
         private void btnSort_Click(object sender, EventArgs e)
         {
-            if (!bgwSimuSort.IsBusy)
-            {
-                sorting = true;
-                btnSort.Enabled = false;
-                sortSelected = cboSortAlgo.SelectedIndex;
-                bgwSimuSort.RunWorkerAsync();
-            }
+            sorting = true;
+            btnSort.Enabled = false;
+            sortSelected = getSortingIndex();
+            bgwSimuSort.RunWorkerAsync();
+
         }
 
         //Change speed sort in runtime
@@ -243,11 +241,6 @@ namespace SortingAlgorithmsSimulation
 
         private void bgwSimuSort_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Cancelled)
-            {
-                MessageBox.Show("Đã ngừng mô phỏng!");
-                return;
-            }
             for (int i = 0; i < numArr; i++)
             {
                 arrColumn[i].BackColor = Color.LightBlue;
@@ -723,5 +716,58 @@ namespace SortingAlgorithmsSimulation
         }
 
         #endregion
+
+        private void DAteloiV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboSortAlgo.Items.Clear();
+            //Sắp xếp theo phương pháp xen vào
+            if (DAteloiV.SelectedIndex == 0)
+            {
+                cboSortAlgo.Items.Add("Insertion Sort");
+                cboSortAlgo.Items.Add("Binary Insertion Sort");
+                cboSortAlgo.Items.Add("Shell Sort");
+            }
+            //Sắp xếp theo phương pháp đổi chỗ
+            else if (DAteloiV.SelectedIndex == 1)
+            {
+                cboSortAlgo.Items.Add("Interchange Sort");
+                cboSortAlgo.Items.Add("Bubble Sort");
+                cboSortAlgo.Items.Add("Shaker Sort");
+                cboSortAlgo.Items.Add("Quick Sort");
+                cboSortAlgo.Items.Add("Merge Sort");
+            }
+            //Sắp xếp theo phương pháp lựa chọn
+            else if (DAteloiV.SelectedIndex == 2)
+            {
+                cboSortAlgo.Items.Add("Selection Sort");
+                cboSortAlgo.Items.Add("Heap Sort");
+            }
+            cboSortAlgo.SelectedIndex = 0;
+        }
+
+        private int getSortingIndex()
+        {
+            if (cboSortAlgo.Text == "Interchange Sort")
+                return 0;
+            if (cboSortAlgo.Text == "Insertion Sort")
+                return 1;
+            if (cboSortAlgo.Text == "Binary Insertion Sort")
+                return 2;
+            if (cboSortAlgo.Text == "Selection Sort")
+                return 3;
+            if (cboSortAlgo.Text == "Bubble Sort")
+                return 4;
+            if (cboSortAlgo.Text == "Shaker Sort")
+                return 5;
+            if (cboSortAlgo.Text == "Heap Sort")
+                return 6;
+            if (cboSortAlgo.Text == "Quick Sort")
+                return 7;
+            if (cboSortAlgo.Text == "Merge Sort")
+                return 8;
+            if (cboSortAlgo.Text == "Shell Sort")
+                return 9;
+            return 0;
+        }
     }
 }
